@@ -3,7 +3,7 @@ export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$
 alias ls='ls -GFh'
 
 ### Bash profile. Use reprof to apply updates.
-alias prof="subl ~/.bash_profile"
+alias prof="subl ~/.bashrc"
 alias reprof=". ~/.bash_profile"
 
 ### Show and hide hidden files in finder
