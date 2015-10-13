@@ -9,6 +9,8 @@ alias reprof=". ~/.bash_profile"
 ### Show and hide hidden files in finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias show='chflags nohidden'
+alias hide='chflags hidden'
 
 ### Git commands
 
@@ -49,6 +51,8 @@ alias npmAll='npm list -g --depth=0'
 alias brewAll='brew list --versions'
 
 ### Directory commands
+alias dotfiles='cd ~/dotfiles'
+
 alias hack='cd /Users/brettkan/Dropbox/Hack_Reactor'
 alias algs='cd /Users/brettkan/Dropbox/Hack_Reactor/algorithms'
 alias toy='cd /Users/brettkan/Dropbox/Hack_Reactor/2015-05-toy-problems'
