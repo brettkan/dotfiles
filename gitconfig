@@ -1,0 +1,30 @@
+[user]
+	name = brettkan
+	email = bkfighton@gmail.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	editor = subl -n -w
+[color]
+  ui = true
+[color "status"]
+  branch = blue bold
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  dh = diff head
+  undo = reset HEAD~
+  cob = checkout -b
+  pom = push origin master
+  prum = pull --rebase upstream master
+  hist = log --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%cr:%Creset %s%C(red)%d %C(green)%an%Creset' --abbrev-commit
+  type = cat-file -t
+  dump = cat-file -p
+
+  toypull = pull-request -b brettkan
+
+  
+[credential]
+	helper = osxkeychain
