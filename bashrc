@@ -18,7 +18,7 @@ alias hide='chflags hidden'
 alias git=hub
 
 # Git AutoComplete
-source /opt/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-completion.bash
 
 # Git shortcuts
 alias gconfig='subl ~/.gitconfig'
