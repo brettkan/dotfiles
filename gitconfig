@@ -5,6 +5,7 @@
 	autocrlf = input
 	safecrlf = true
 	editor = subl -n -w
+	excludesfile = /Users/brettkan/.gitignore_global
 [color]
   ui = true
 [color "status"]
@@ -28,3 +29,9 @@
   
 [credential]
 	helper = osxkeychain
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
