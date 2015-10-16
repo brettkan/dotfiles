@@ -19,6 +19,7 @@
   undo = reset HEAD~
   cob = checkout -b
   pom = push origin master
+  prom = pull --rebase origin master
   prum = pull --rebase upstream master
   hist = log --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%cr:%Creset %s%C(red)%d %C(green)%an%Creset' --abbrev-commit
   type = cat-file -t
