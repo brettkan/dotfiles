@@ -18,9 +18,7 @@ alias hide='chflags hidden'
 alias git=hub
 
 # Git AutoComplete
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
+source /opt/local/etc/bash_completion.d/git-completion.bash
 
 # Git shortcuts
 alias gconfig='subl ~/.gitconfig'
@@ -60,6 +58,8 @@ alias self='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/fantasyFootballDraf
 alias green='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/HowWasIt'
 alias legacy='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/MuniButler-Mobile'
 alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
+
+alias gfm='cd ~/gofundme/product'
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
