@@ -8,6 +8,9 @@
 	excludesfile = /Users/brettkan/.gitignore_global
 [color]
   ui = true
+  diff = auto
+[color "diff"]
+  meta = blue bold
 [color "status"]
   branch = blue bold
 [alias]
