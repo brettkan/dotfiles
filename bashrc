@@ -60,6 +60,10 @@ alias legacy='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/MuniButler-Mobile
 alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 
 alias gfm='cd ~/gofundme/product'
+alias gfmv='cd ~/gofundme/product/funds.gofundme.com/_SERVER_/vagrant'
+
+### GoFundMe Server
+alias support01='ssh bkan@50.56.179.49'
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
