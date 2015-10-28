@@ -65,7 +65,7 @@ alias gfmv='cd ~/gofundme/product/funds.gofundme.com/_SERVER_/vagrant'
 
 ### GoFundMe Server
 alias support01='ssh bkan@50.56.179.49'
-alias docker1='ssh bkan@docker1'
+alias docker1='ssh bkan@104.130.131.202'
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
