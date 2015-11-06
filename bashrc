@@ -75,3 +75,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Postgres
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+
+
+### Base 64 Decode
+b64() {
+    echo $1 | base64 -D | python -mjson.tool
+}
+
+
