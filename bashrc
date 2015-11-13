@@ -62,6 +62,7 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 ### GoFundMe directory commands
 alias gfm='cd ~/gofundme/product'
 alias gfmv='cd ~/gofundme/product/funds.gofundme.com/_SERVER_/vagrant'
+alias gfmed='cd ~/gofundme/product/funds.gofundme.com/js/modules/enterDonate/mobile/js'
 
 ### GoFundMe Server
 alias support01='ssh bkan@50.56.179.49'
@@ -80,6 +81,10 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 ### Base 64 Decode
 b64() {
     echo $1 | base64 -D | python -mjson.tool
+}
+
+eject() {
+	git revert --no-commit $1..HEAD
 }
 
 
