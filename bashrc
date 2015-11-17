@@ -83,6 +83,7 @@ b64() {
     echo $1 | base64 -D | python -mjson.tool
 }
 
+### Git revert last few.  Pass in commit that you want to change back to.
 eject() {
 	git revert --no-commit $1..HEAD
 }
