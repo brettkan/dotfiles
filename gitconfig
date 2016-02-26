@@ -25,7 +25,6 @@
   pr = pull --rebase
   clean = clean -f -d
   hist = log --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%cr:%Creset %s%C(red)%d %C(green)%an%Creset' --abbrev-commit
-  hist2 = log origin/feat/donorFlowRedesign --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%cr:%Creset %s%C(red)%d %C(green)%an%Creset' --abbrev-commit
   type = cat-file -t
   dump = cat-file -p
 
