@@ -32,11 +32,9 @@ alias gdh='git diff head'
 alias gds='git diff --staged'
 alias gh='git hist'
 alias go='git checkout '
-alias gk='gitk --all&'
-alias gx='gitx --all'
 
-alias gbr='git browse'
-alias gpr='git pull-request'
+alias gbr='hub browse'
+alias gpr='hub pull-request'
 
 alias got='git '
 alias get='git '
@@ -64,11 +62,10 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 ### GoFundMe directory commands
 alias gfm='cd ~/gofundme/product'
 alias gfmv='cd ~/gofundme/product/funds.gofundme.com/_SERVER_/vagrant'
-alias gfmed='cd ~/gofundme/product/funds.gofundme.com/js/modules/enterDonate/mobile/js'
 
 ### GoFundMe Server
 alias support01='ssh bkan@50.56.179.49'
-alias docker1='ssh bkan@104.130.131.202'
+alias docker01='ssh bkan@104.130.131.202'
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
