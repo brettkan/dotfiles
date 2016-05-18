@@ -58,6 +58,7 @@ alias self='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/fantasyFootballDraf
 alias green='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/HowWasIt'
 alias legacy='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/MuniButler-Mobile'
 alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
+alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### GoFundMe directory commands
 alias gfm='cd ~/gofundme/product'
@@ -70,16 +71,23 @@ alias docker01='ssh bkan@104.130.131.202'
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-### Postgres
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-
+export PATH="$PATH:${HOME}/bin"
+export PATH="$PATH:${HOME}/.composer/vendor/bin"
 
 ### Base 64 Decode
 b64() {
-    echo $1 | base64 -D | python -mjson.tool
+    echo ${1:5} | base64 -D | python -mjson.tool
+}
+
+b64Watch() {
+    #!/bin/bash
+    if [ "x$1" != "x" ]; then
+       ./urldecode `echo $1 | sed -r 's/^data://'` |base64 -d | python -mjson.tool
+    else
+       while read line; do
+           ./urldecode `echo $line | sed -r 's/^data://'` |base64 -d | python -mjson.tool
+       done
+    fi
 }
 
 ### Git revert last few.  Pass in commit that you want to change back to.
