@@ -63,8 +63,8 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### GoFundMe directory commands
-alias gfm='cd ~/gofundme/product'
-alias gfmv='cd ~/gofundme/product/funds.gofundme.com/_SERVER_/vagrant'
+alias gfm='cd ~/gofundme/gofundme'
+alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 
 ### GoFundMe Server
 alias support01='ssh bkan@50.56.179.49'
