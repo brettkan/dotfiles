@@ -45,7 +45,10 @@ alias coffeeCompile='coffee --output compiled --map --watch --compile ./'
 
 ### npm
 alias npmAll='npm list -g --depth=0'
-source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/npm
+
+### gulp
+# eval "$(gulp --completion=bash)"
 
 ### homebrew
 alias brewAll='brew list --versions'
