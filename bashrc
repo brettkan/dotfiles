@@ -45,6 +45,7 @@ alias coffeeCompile='coffee --output compiled --map --watch --compile ./'
 
 ### npm
 alias npmAll='npm list -g --depth=0'
+source /usr/local/etc/bash_completion.d/git-completion.bash
 
 ### homebrew
 alias brewAll='brew list --versions'
@@ -63,6 +64,7 @@ alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### GoFundMe directory commands
 alias gfm='cd ~/gofundme/gofundme'
+alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 
 ### GoFundMe Server
