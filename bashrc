@@ -74,6 +74,10 @@ alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 alias support01='ssh bkan@50.56.179.49'
 alias docker01='ssh bkan@104.130.131.202'
 
+### GFM livetail
+alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
+alias gfmtail="livetail '_source=php_fpm_logs'"
+
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
 
