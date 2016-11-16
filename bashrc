@@ -70,10 +70,6 @@ alias gfm='cd ~/gofundme/gofundme'
 alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 
-### GoFundMe Server
-alias support01='ssh bkan@50.56.179.49'
-alias docker01='ssh bkan@104.130.131.202'
-
 ### GFM livetail
 alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
 alias gfmtail="livetail '_source=php_fpm_logs'"
