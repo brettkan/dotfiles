@@ -69,6 +69,7 @@ alias scripts='cd /Users/brettkan/Documents/scripts'
 alias gfm='cd ~/gofundme/gofundme'
 alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
+alias gfmng='ngrok http 172.28.128.3:80'
 
 ### GFM livetail
 alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
