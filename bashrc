@@ -71,6 +71,10 @@ alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 alias gfmng='ngrok http 172.28.128.3:80'
 
+dockenter() {
+  ssh dockroll -t "dockenter $1"
+}
+
 ### GFM livetail
 alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
 alias gfmtail="livetail '_source=php_fpm_logs'"
