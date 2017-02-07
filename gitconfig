@@ -22,6 +22,7 @@
   undo = reset HEAD~
   cob = checkout -b
   pom = push origin master
+  deleter = push origin --delete
   pr = pull --rebase
   clean = clean -i
   hist = log --graph --pretty=format:'%C(yellow)%h%Creset %C(blue)%cr:%Creset %s%C(red)%d %C(green)%an%Creset' --abbrev-commit
