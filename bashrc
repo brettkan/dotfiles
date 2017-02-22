@@ -33,6 +33,7 @@ alias gdl='git diff head~'
 alias gds='git diff --staged'
 alias gh='git hist'
 alias go='git checkout '
+alias gcu='git submodule update'
 
 alias gbr='hub browse'
 alias gpr='hub pull-request'
