@@ -72,7 +72,7 @@ alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmd='cd ~/gofundme/docker-services/'
 alias bw='cd ~/gofundme/docker-services/bigweb'
 alias bwup='bw && docker-compose up'
-alias bwenter='gfmbw && docker exec -it bigweb /bin/bash'
+alias bwenter='bw && docker exec -it bigweb /bin/bash'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 alias gfmng='ngrok http 172.28.128.3:80'
 
