@@ -73,8 +73,10 @@ alias gfmd='cd ~/gofundme/docker-services/'
 alias bw='cd ~/gofundme/docker-services/bigweb'
 alias bwup='bw && docker-compose up'
 alias bwenter='bw && docker exec -it bigweb /bin/bash'
+alias awslogin='bw && ../scripts/login.sh ecr_user'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
-alias gfmng='ngrok http 172.28.128.3:80'
+#alias gfmng='ngrok http 172.28.128.3:80'
+alias gfmng='ngrok http 127.0.0.1:80'
 
 dockenter() {
   ssh dockroll -t "dockenter $1"
