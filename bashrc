@@ -71,12 +71,15 @@ alias gfm='cd ~/gofundme/gofundme'
 alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmd='cd ~/gofundme/docker-services/'
 alias dup='gfmd && docker-compose up bigweb co'
-alias denter='gfmd && docker exec -it bigweb /bin/bash'
 alias dlogin='gfmd && ./scripts/login.sh ecr_user'
 alias dbuild='gfmd && ./scripts/build-php.sh && ./scripts/build-co.sh'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
 #alias gfmng='ngrok http 172.28.128.3:80'
 alias gfmng='ngrok http 127.0.0.1:80'
+
+dssh() {
+  gfmd && docker exec -it $1 /bin/bash
+}
 
 dockenter() {
   ssh dockroll -t "dockenter $1"
