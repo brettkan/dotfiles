@@ -70,7 +70,8 @@ alias scripts='cd /Users/brettkan/Documents/scripts'
 alias gfm='cd ~/gofundme/gofundme'
 alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmd='cd ~/gofundme/docker-services/'
-alias dup='gfmd && docker-compose up bigweb co'
+# alias dup='gfmd && docker-compose up bigweb co'
+alias dup='gfmd && docker-compose -f docker-compose-api-dev.yml up'
 alias dlogin='gfmd && ./scripts/login.sh ecr_user'
 alias dbuild='gfmd && ./scripts/build-php.sh && ./scripts/build-co.sh'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
@@ -109,6 +110,12 @@ b64Watch() {
            ./urldecode `echo $line | sed -r 's/^data://'` |base64 -d | python -mjson.tool
        done
     fi
+}
+
+bbpr() {
+  branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+  url="https://bitbucket.org/gofundmedevs/gofundme/pull-requests/new?source=${branch}&t=1&dest=${1}"
+  python -mwebbrowser $url
 }
 
 ### Git revert last few.  Pass in commit that you want to change back to.
