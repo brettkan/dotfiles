@@ -85,6 +85,9 @@ dssh() {
 dockenter() {
   ssh dockroll -t "dockenter $1"
 }
+dockenterdev() {
+  ssh dockrolldev -t "dockenter $1"
+}
 
 ### GFM livetail
 alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
@@ -114,7 +117,8 @@ b64Watch() {
 
 bbpr() {
   branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-  url="https://bitbucket.org/gofundmedevs/gofundme/pull-requests/new?source=${branch}&t=1&dest=${1}"
+  repo=$(basename `git rev-parse --show-toplevel`)
+  url="https://bitbucket.org/gofundmedevs/${repo}/pull-requests/new?source=${branch}&t=1&dest=${1}"
   python -mwebbrowser $url
 }
 
