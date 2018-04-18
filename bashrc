@@ -71,7 +71,7 @@ alias gfm='cd ~/gofundme/gofundme'
 alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
 alias gfmd='cd ~/gofundme/docker-services/'
 # alias dup='gfmd && docker-compose up bigweb co'
-alias dup='gfmd && docker-compose -f docker-compose-api-dev.yml up'
+alias dup='gfmd && docker-compose up gfm-min && docker-compose logs -f'
 alias dlogin='gfmd && ./scripts/login.sh ecr_user'
 alias dbuild='gfmd && ./scripts/build-php.sh && ./scripts/build-co.sh'
 alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
@@ -101,7 +101,7 @@ export PATH="$PATH:${HOME}/.composer/vendor/bin"
 
 ### Base 64 Decode
 b64() {
-    echo ${1:5} | base64 -D | python -mjson.tool
+    echo $2 | base64 -D | python -mjson.tool
 }
 
 b64Watch() {
