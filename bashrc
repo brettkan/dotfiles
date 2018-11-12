@@ -41,21 +41,17 @@ alias gpr='hub pull-request'
 alias got='git '
 alias get='git '
 
-### CoffeeScript
-alias coffeeCompile='coffee --output compiled --map --watch --compile ./'
-
 ### npm
 alias npmAll='npm list -g --depth=0'
 source /usr/local/etc/bash_completion.d/npm
-
-### gulp
-# eval "$(gulp --completion=bash)"
 
 ### homebrew
 alias brewAll='brew list --versions'
 
 ### Directory commands
 alias dotfiles='cd ~/dotfiles'
+
+alias src='cd ~/src'
 
 alias hack='cd /Users/brettkan/Dropbox/Hack_Reactor'
 alias algs='cd /Users/brettkan/Dropbox/Hack_Reactor/algorithms'
@@ -66,32 +62,61 @@ alias legacy='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/MuniButler-Mobile
 alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
-### GoFundMe directory commands
-alias gfm='cd ~/gofundme/gofundme'
-alias gfmf='cd ~/gofundme/gofundme/funds.gofundme.com'
-alias gfmd='cd ~/gofundme/docker-services/'
-# alias dup='gfmd && docker-compose up bigweb co'
-alias dup='gfmd && docker-compose up gfm-min && docker-compose logs -f'
-alias dlogin='gfmd && ./scripts/login.sh ecr_user'
-alias dbuild='gfmd && ./scripts/build-php.sh && ./scripts/build-co.sh'
-alias gfmv='cd ~/gofundme/gofundme/funds.gofundme.com/_SERVER_/vagrant'
-#alias gfmng='ngrok http 172.28.128.3:80'
-alias gfmng='ngrok http 127.0.0.1:80'
-
-dssh() {
-  gfmd && docker exec -it $1 /bin/bash
+### Lyft Onebox
+alias ob='ssh bkan-onebox.dev.ln -t "onebox_env"'
+alias sshwww2='ssh www2-legacy-bkan-onebox.dev.ln'
+alias sshtom='ssh tom-legacy-bkan-onebox.dev.ln'
+alias sshgroundcontrol='ssh groundcontrol-legacy-bkan-onebox.dev.ln'
+alias www2ob='ssh www2-legacy-bkan-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
+alias tomob='ssh tom-legacy-bkan-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
+alias groundcontrolob='ssh groundcontrol-legacy-bkan-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
+alias syncwww2='~/src/hacktools/sync-to-onebox-v3.sh www2-legacy-bkan'
+alias synctom='~/src/hacktools/sync-to-onebox-v3.sh tom-legacy-bkan'
+alias tom='cd ~/src/tom'
+alias www2='cd ~/src/lyft.com'
+alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
+sync () {
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-bkan
+}
+y () {
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-bkan
+}
+sshl () {
+    ssh $1-legacy-bkan-onebox.dev.ln -t "cd /srv/service/current; bash"
+}
+s () {
+    ssh $1-legacy-bkan-onebox.dev.ln -t "cd /srv/service/current; bash"
+}
+tailf () {
+    ssh $1-legacy-bkan-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
+}
+tailegress () {
+    ssh $1-legacy-bkan-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
+}
+tailingress () {
+    ssh $1-legacy-bkan-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
+}
+sshob () {
+    ssh $1-onebox.dev.ln -t "onebox_env"
+}
+sshlob () {
+    ssh $1-legacy-$2-onebox.dev.ln
+}
+syncob () {
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2
+}
+tailfob () {
+    ssh $1-legacy-$2-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
+}
+testgreen () {
+    ssh green-legacy-bkan-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
+}
+lintgreen () {
+    ssh green-legacy-bkan-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
 }
 
-dockenter() {
-  ssh dockroll -t "dockenter $1"
-}
-dockenterdev() {
-  ssh dockrolldev -t "dockenter $1"
-}
-
-### GFM livetail
-alias livetail="cd ~/Dropbox/My\ Projects/Scripts/ && livetail"
-alias gfmtail="livetail '_source=php_fpm_logs'"
+# bless ssh alias
+source '/Users/bkan/src/blessclient/lyftprofile'
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
@@ -102,24 +127,6 @@ export PATH="$PATH:${HOME}/.composer/vendor/bin"
 ### Base 64 Decode
 b64() {
     echo $2 | base64 -D | python -mjson.tool
-}
-
-b64Watch() {
-    #!/bin/bash
-    if [ "x$1" != "x" ]; then
-       ./urldecode `echo $1 | sed -r 's/^data://'` |base64 -d | python -mjson.tool
-    else
-       while read line; do
-           ./urldecode `echo $line | sed -r 's/^data://'` |base64 -d | python -mjson.tool
-       done
-    fi
-}
-
-bbpr() {
-  branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-  repo=$(basename `git rev-parse --show-toplevel`)
-  url="https://bitbucket.org/gofundmedevs/${repo}/pull-requests/new?source=${branch}&t=1&dest=${1}"
-  python -mwebbrowser $url
 }
 
 ### Git revert last few.  Pass in commit that you want to change back to.
