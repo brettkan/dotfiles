@@ -31,6 +31,9 @@ alias gd='git diff'
 alias gdh='git diff head'
 alias gdl='git diff head~'
 alias gds='git diff --staged'
+gdc () {
+    gd $1~ $1
+}
 alias gh='git hist'
 alias go='git checkout '
 alias gcu='git submodule update'
@@ -115,7 +118,30 @@ lintgreen () {
     ssh green-legacy-bkan-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
 }
 
-# bless ssh alias
+### Testing
+
+# full suite of JS tests
+# service_venv ./manage.py test js
+
+# full suite of Python tests
+# sudo service_venv ./manage.py test python
+
+# full suite of tests with regex
+# sudo service_venv ./manage.py test python --only "payouts_test.py"
+
+# Python test one file (fast)
+# sudo service_venv py.test test/unit/server/resources/payouts_test.py
+
+# PDB debugger in python
+# import pdb; pdb.set_trace()
+
+# JS Test Watch
+# sudo grunt watch:jsTest
+
+# Update onebox with new dependencies / requirements
+# sudo salt-call state.highstate
+
+### bless ssh alias
 source '/Users/bkan/src/blessclient/lyftprofile'
 
 ### Ghost blog
