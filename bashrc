@@ -103,7 +103,7 @@ sshob () {
     ssh $1-onebox.dev.ln -t "onebox_env"
 }
 sshlob () {
-    ssh $1-legacy-$2-onebox.dev.ln
+    ssh $1-legacy-$2-onebox.dev.ln -t "cd /srv/service/current; bash"
 }
 syncob () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2
