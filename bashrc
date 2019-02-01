@@ -53,6 +53,13 @@ hubc() {
     python -mwebbrowser $url
 }
 
+hubpr() {
+    reponame=$(basename -s .git `git config --get remote.origin.url`)
+    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    url="https://github.com/lyft/${reponame}/compare/${branch}?expand=1"
+    python -mwebbrowser $url
+}
+
 ### npm
 alias npmAll='npm list -g --depth=0'
 source /usr/local/etc/bash_completion.d/npm
