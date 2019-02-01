@@ -44,6 +44,15 @@ alias gpr='hub pull-request'
 alias got='git '
 alias get='git '
 
+# Github scripts
+
+hubc() {
+    reponame=$(basename -s .git `git config --get remote.origin.url`)
+    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    url="https://github.com/lyft/${reponame}/compare/${branch}"
+    python -mwebbrowser $url
+}
+
 ### npm
 alias npmAll='npm list -g --depth=0'
 source /usr/local/etc/bash_completion.d/npm
@@ -126,7 +135,7 @@ lintgreen () {
 # full suite of Python tests
 # sudo service_venv ./manage.py test python
 
-# full suite of tests with regex
+# full suite of Python tests with regex
 # sudo service_venv ./manage.py test python --only "payouts_test.py"
 
 # Python test one file (fast)
