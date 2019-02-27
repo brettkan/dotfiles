@@ -94,7 +94,7 @@ alias synctom='~/src/hacktools/sync-to-onebox-v3.sh tom-legacy-bkan'
 alias tom='cd ~/src/tom'
 alias www2='cd ~/src/lyft.com'
 alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
-alias reado='ssh readonlydb.ln'
+alias reado='ssh readonlydb.ln -t "rom ats shell"'
 sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-bkan
 }
