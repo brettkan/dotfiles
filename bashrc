@@ -159,6 +159,9 @@ lintgreen () {
 # Update onebox with new dependencies / requirements
 # sudo salt-call state.highstate
 
+# Build and restart wwwpayxpfe
+# sudo make build && sudo sv restart wwwpayxpfe-web
+
 ### bless ssh alias
 source '/Users/bkan/src/blessclient/lyftprofile'
 
