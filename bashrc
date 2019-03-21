@@ -95,7 +95,6 @@ alias synctom='~/src/hacktools/sync-to-onebox-v3.sh tom-legacy-$CURBOX'
 alias tom='cd ~/src/tom'
 alias www2='cd ~/src/lyft.com'
 alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
-alias reado='ssh readonlydb.ln -t "rom ats shell"'
 sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
 }
@@ -134,6 +133,9 @@ testgreen () {
 }
 lintgreen () {
     ssh green-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
+}
+reado () {
+    ssh readonlydb.ln -t "rom $1 shell"
 }
 
 ### Testing
