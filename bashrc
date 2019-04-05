@@ -82,7 +82,7 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### Lyft Onebox
-CURBOX="bkan"
+CURBOX="bkantest"
 alias ob='ssh $CURBOX-onebox.dev.ln -t "onebox_env"'
 alias sshwww2='ssh www2-legacy-$CURBOX-onebox.dev.ln'
 alias sshtom='ssh tom-legacy-$CURBOX-onebox.dev.ln'
@@ -139,6 +139,9 @@ reado () {
 }
 
 ### Testing
+
+# full suite of JS tests (without tests)
+# service_venv ./manage.py test karma
 
 # full suite of JS tests
 # service_venv ./manage.py test js
