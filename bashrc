@@ -140,7 +140,7 @@ reado () {
 
 ### Testing
 
-# full suite of JS tests (without tests)
+# full suite of JS tests (without linting)
 # service_venv ./manage.py test karma
 
 # full suite of JS tests
