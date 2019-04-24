@@ -82,7 +82,7 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### Lyft Onebox
-CURBOX="bkantest"
+CURBOX="bkan"
 alias ob='ssh $CURBOX-onebox.dev.ln -t "onebox_env"'
 alias sshwww2='ssh www2-legacy-$CURBOX-onebox.dev.ln'
 alias sshtom='ssh tom-legacy-$CURBOX-onebox.dev.ln'
@@ -167,7 +167,6 @@ reado () {
 # Build and restart wwwpayxpfe
 # sudo make build && sudo sv restart wwwpayxpfe-web
 
-### bless ssh alias
 source '/Users/bkan/src/blessclient/lyftprofile'
 
 ### Ghost blog
