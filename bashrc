@@ -82,7 +82,7 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### Lyft Onebox
-CURBOX="bkan"
+CURBOX="bkanlyft"
 alias ob='ssh $CURBOX-onebox.dev.ln -t "onebox_env"'
 alias sshwww2='ssh www2-legacy-$CURBOX-onebox.dev.ln'
 alias sshtom='ssh tom-legacy-$CURBOX-onebox.dev.ln'
@@ -97,6 +97,9 @@ alias www2='cd ~/src/lyft.com'
 alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
 sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
+}
+synchost () {
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX --location host
 }
 y () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
