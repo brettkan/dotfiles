@@ -99,7 +99,7 @@ sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
 }
 synchost () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX --location host
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
 }
 y () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
