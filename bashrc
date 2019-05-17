@@ -69,6 +69,7 @@ alias brewAll='brew list --versions'
 
 ### Directory commands
 alias dotfiles='cd ~/dotfiles'
+alias openhosts='subl /Users/bkan/.ssh/known_hosts'
 
 alias src='cd ~/src'
 
@@ -169,6 +170,9 @@ reado () {
 
 # Build and restart wwwpayxpfe
 # sudo make build && sudo sv restart wwwpayxpfe-web
+
+# Go To Packages Directory
+# /srv/venvs/service/trusty/service_venv_python3.6/lib/python3.6/site-packages/
 
 source '/Users/bkan/src/blessclient/lyftprofile'
 
