@@ -168,6 +168,9 @@ reado () {
 # Update onebox with new dependencies / requirements
 # sudo salt-call state.highstate
 
+# Update python packages
+# sudo service_venv pip install -r requirements.txt
+
 # Build and restart wwwpayxpfe
 # sudo make build && sudo sv restart wwwpayxpfe-web
 
