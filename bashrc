@@ -200,3 +200,4 @@ pretty() {
 eject() {
 	git revert --no-commit $1..HEAD
 }
+PATH=$PATH:/Users/bkan/.lyftkube-bin
