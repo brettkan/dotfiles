@@ -165,6 +165,10 @@ reado () {
 # JS Test Watch
 # sudo grunt watch:jsTest
 
+# Jest in onebox
+# npm i -g jest-cli
+# jest file.spec.jsx
+
 # Update onebox with new dependencies / requirements
 # sudo salt-call state.highstate
 
