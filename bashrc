@@ -35,7 +35,6 @@ gdc () {
     gd $1~ $1
 }
 alias gh='git hist'
-alias go='git checkout '
 alias gcu='git submodule update'
 
 alias gbr='hub browse'
