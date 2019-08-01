@@ -12,6 +12,10 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias show='chflags nohidden'
 alias hide='chflags hidden'
 
+### Go config
+export GOPATH=~/go
+export PATH=$GOPATH/bin:$PATH
+
 ### Git commands
 
 # Hub Wrapper
