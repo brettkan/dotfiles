@@ -75,6 +75,7 @@ alias dotfiles='cd ~/dotfiles'
 alias openhosts='subl /Users/bkan/.ssh/known_hosts'
 
 alias src='cd ~/src'
+alias srcg='cd $GOPATH/src/github.com/lyft'
 
 alias hack='cd /Users/brettkan/Dropbox/Hack_Reactor'
 alias algs='cd /Users/brettkan/Dropbox/Hack_Reactor/algorithms'
