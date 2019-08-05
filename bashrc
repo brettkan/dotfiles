@@ -103,6 +103,9 @@ alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
 sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
 }
+syncg () {
+    ~/go/src/github.com/lyft/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
+}
 synchost () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
 }
