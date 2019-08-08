@@ -148,6 +148,10 @@ lintgreen () {
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
+glideup () { # https://github.com/lyft/gotools/tree/master/cmd/gotools-glide-up
+    gotools-glide-up github.com/lyft/$1/
+}
+
 
 ### Testing
 
