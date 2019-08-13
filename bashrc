@@ -155,6 +155,12 @@ glideup () { # https://github.com/lyft/gotools/tree/master/cmd/gotools-glide-up
     gotools-glide-up github.com/lyft/$1/
 }
 
+### lyftenv commands
+
+# install aactivator
+eval "$(/lyft/brew/bin/aactivator init)"
+
+
 
 ### Testing
 
