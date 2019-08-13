@@ -148,6 +148,9 @@ lintgreen () {
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
+run-piptools () {
+    ~/src/hacktools/run-piptools --onebox bkan
+}
 glideup () { # https://github.com/lyft/gotools/tree/master/cmd/gotools-glide-up
     gotools-glide-up github.com/lyft/$1/
 }
