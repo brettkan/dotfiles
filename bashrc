@@ -109,6 +109,9 @@ syncg () {
 synchost () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
 }
+setbp () {
+    ~/src/hacktools/debug-onebox-service --onebox $CURBOX --container $1.legacy
+}
 y () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
 }
