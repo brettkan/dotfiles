@@ -196,7 +196,7 @@ eval "$(/lyft/brew/bin/aactivator init)"
 # sudo salt-call state.highstate
 
 # Update python packages
-# sudo service_venv pip install -r requirements.txt
+# sudo service_venv pip3 install -r requirements3.txt
 
 # Build and restart wwwpayxpfe
 # sudo make build && sudo sv restart wwwpayxpfe-web
