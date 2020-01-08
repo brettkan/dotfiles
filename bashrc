@@ -12,17 +12,6 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias show='chflags nohidden'
 alias hide='chflags hidden'
 
-### pyenv config
-echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
-
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
-
-
 ### Go config
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
@@ -242,4 +231,11 @@ pretty() {
 eject() {
 	git revert --no-commit $1..HEAD
 }
+
+### Lyftkube PATH
 PATH=$PATH:/Users/bkan/.lyftkube-bin
+
+### pyenv config
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
