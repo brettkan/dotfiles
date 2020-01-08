@@ -12,6 +12,17 @@ alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall F
 alias show='chflags nohidden'
 alias hide='chflags hidden'
 
+### pyenv config
+echo -e 'if command -v pyenv 1>/dev/null 2>&1; then\n  eval "$(pyenv init -)"\nfi' >> ~/.bashrc
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+
 ### Go config
 export GOPATH=~/go
 export PATH=$GOPATH/bin:$PATH
@@ -168,10 +179,14 @@ eval "$(/lyft/brew/bin/aactivator init)"
 ### Testing
 
 # full suite of JS tests (without linting)
-# service_venv ./manage.py test karma
+# sudo service_venv ./manage.py test karma
 
 # full suite of JS tests
-# service_venv ./manage.py test js
+# sudo service_venv ./manage.py test js
+
+# Jest Tests
+# sudo npm i -g jest-cli  
+# jest file.spec.jsx -t "someTest"
 
 # full suite of Python tests
 # sudo service_venv ./manage.py test python
