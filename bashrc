@@ -89,19 +89,20 @@ alias scripts='cd /Users/brettkan/Documents/scripts'
 ### Lyft Onebox
 CURBOX="bkan"
 alias ob='ssh $CURBOX-onebox.dev.ln -t "onebox_env"'
-alias sshwww2='ssh www2-legacy-$CURBOX-onebox.dev.ln'
-alias sshtom='ssh tom-legacy-$CURBOX-onebox.dev.ln'
-alias sshgroundcontrol='ssh groundcontrol-legacy-$CURBOX-onebox.dev.ln'
-alias www2ob='ssh www2-legacy-$CURBOX-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
-alias tomob='ssh tom-legacy-$CURBOX-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
-alias groundcontrolob='ssh groundcontrol-legacy-$CURBOX-onebox.dev.ln -t "sudo sh /srv/service/current/devboxify.sh"'
-alias syncwww2='~/src/hacktools/sync-to-onebox-v3.sh www2-legacy-$CURBOX'
-alias synctom='~/src/hacktools/sync-to-onebox-v3.sh tom-legacy-$CURBOX'
-alias tom='cd ~/src/tom'
-alias www2='cd ~/src/lyft.com'
-alias adb='/Users/bkan/Library/Android/sdk/platform-tools/adb'
+sshob () {
+    ssh $1-onebox.dev.ln -t "onebox_env"
+}
+sshl () {
+    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; bash"
+}
+sshlob () {
+    ssh $1-legacy-$2-onebox.dev.ln -t "cd /srv/service/current; bash"
+}
 sync () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
+}
+syncob () {
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2
 }
 syncg () {
     ~/go/src/github.com/lyft/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
@@ -109,20 +110,11 @@ syncg () {
 synchost () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
 }
-setbp () {
-    ~/src/hacktools/debug-onebox-service --onebox $CURBOX --container $1.legacy
-}
-y () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
-}
-sshl () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; bash"
-}
-s () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; bash"
-}
 tailf () {
     ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
+}
+tailfob () {
+    ssh $1-legacy-$2-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
 }
 tailegress () {
     ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
@@ -130,17 +122,8 @@ tailegress () {
 tailingress () {
     ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
 }
-sshob () {
-    ssh $1-onebox.dev.ln -t "onebox_env"
-}
-sshlob () {
-    ssh $1-legacy-$2-onebox.dev.ln -t "cd /srv/service/current; bash"
-}
-syncob () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2
-}
-tailfob () {
-    ssh $1-legacy-$2-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
+setbp () {
+    ~/src/hacktools/debug-onebox-service --onebox $CURBOX --container $1.legacy
 }
 testgreen () {
     ssh green-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
