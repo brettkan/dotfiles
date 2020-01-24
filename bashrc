@@ -87,22 +87,15 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### Lyft Onebox
-CURBOX="bkan"
-alias ob='ssh $CURBOX-onebox.dev.ln -t "onebox_env"'
-sshob () {
-    ssh $1-onebox.dev.ln -t "onebox_env"
+CURBOX="bkan" # This is the default argument for ob, sshl, sync, tailf, etc
+function ob {
+    ssh ${1:-$CURBOX}-onebox.dev.ln -t "onebox_env"
 }
 sshl () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; bash"
-}
-sshlob () {
-    ssh $1-legacy-$2-onebox.dev.ln -t "cd /srv/service/current; bash"
+    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; bash"
 }
 sync () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
-}
-syncob () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2
+    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-${2:-$CURBOX}
 }
 syncg () {
     ~/go/src/github.com/lyft/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
@@ -111,25 +104,22 @@ synchost () {
     ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
 }
 tailf () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
-}
-tailfob () {
-    ssh $1-legacy-$2-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
+    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
 }
 tailegress () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
+    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
 }
 tailingress () {
-    ssh $1-legacy-$CURBOX-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
+    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
 }
 setbp () {
-    ~/src/hacktools/debug-onebox-service --onebox $CURBOX --container $1.legacy
+    ~/src/hacktools/debug-onebox-service --onebox ${2:-$CURBOX} --container $1.legacy
 }
 testgreen () {
-    ssh green-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
+    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
 }
 lintgreen () {
-    ssh green-legacy-$CURBOX-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
+    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
 }
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
