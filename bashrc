@@ -106,6 +106,9 @@ synchost () {
 tailf () {
     ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
 }
+tailfg () {
+    ssh $1-legacy-${3:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current | grep ${2}"
+}
 tailegress () {
     ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
 }
