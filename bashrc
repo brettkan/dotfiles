@@ -87,52 +87,35 @@ alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
 alias scripts='cd /Users/brettkan/Documents/scripts'
 
 ### Lyft Onebox
-CURBOX="bkan" # This is the default argument for ob, sshl, sync, tailf, etc
-function ob {
-    ssh ${1:-$CURBOX}-onebox.dev.ln -t "onebox_env"
-}
 sshl () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; bash"
+    devctl enter $1.legacy
 }
 sync () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-${2:-$CURBOX}
-}
-syncg () {
-    ~/go/src/github.com/lyft/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
-}
-synchost () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
+    cmd="lyfttilt up"
+    for var in "$@"
+    do
+        cmd+=" ${var}.legacy"
+    done
+    eval $cmd
 }
 tailf () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
-}
-tailfg () {
-    ssh $1-legacy-${3:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current | grep ${2}"
-}
-tailegress () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
-}
-tailingress () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
-}
-setbp () {
-    ~/src/hacktools/debug-onebox-service --onebox ${2:-$CURBOX} --container $1.legacy
-}
-testgreen () {
-    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
-}
-lintgreen () {
-    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
+    if [ -z "$2" ]
+    then
+          devctl logs $1.legacy -f --filepath /var/log/$1-web/current
+    else
+          devctl logs $1.legacy -f --filepath /var/log/$1-web/current -p $2
+    fi
 }
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
 run-piptools () {
-    ~/src/hacktools/run-piptools --onebox $CURBOX
+    devctl run piptools.compile $1
 }
 glideup () { # https://github.com/lyft/gotools/tree/master/cmd/gotools-glide-up
     gotools-glide-up github.com/lyft/$1/
 }
+
 
 ### lyftenv commands
 
