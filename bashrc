@@ -198,3 +198,6 @@ PATH=$PATH:/Users/bkan/.lyftkube-bin
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+source '/Users/bkan/src/awsaccess/awsaccess2.sh' # awsaccess
+source '/Users/bkan/src/awsaccess/oktaawsaccess.sh' # oktaawsaccess
+export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
