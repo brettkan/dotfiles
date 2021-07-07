@@ -47,6 +47,11 @@ alias gpr='hub pull-request'
 alias got='git '
 alias get='git '
 
+# Git revert last few.  Pass in commit that you want to change back to.
+eject() {
+    git revert --no-commit $1..HEAD
+}
+
 # Github scripts
 
 hubc() {
@@ -66,6 +71,7 @@ hubpr() {
 ### npm
 alias npmAll='npm list -g --depth=0'
 source /usr/local/etc/bash_completion.d/npm
+source '/Users/bkan/.sh/custom/npm-logout.sh'
 
 ### homebrew
 alias brewAll='brew list --versions'
@@ -74,123 +80,26 @@ alias brewAll='brew list --versions'
 alias dotfiles='cd ~/dotfiles'
 alias openhosts='subl /Users/bkan/.ssh/known_hosts'
 
+### Lyft Commands
 alias src='cd ~/src'
 alias srcg='cd $GOPATH/src/github.com/lyft'
-
-alias hack='cd /Users/brettkan/Dropbox/Hack_Reactor'
-alias algs='cd /Users/brettkan/Dropbox/Hack_Reactor/algorithms'
-alias toy='cd /Users/brettkan/Dropbox/Hack_Reactor/2015-05-toy-problems'
-alias self='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/fantasyFootballDrafter'
-alias green='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/HowWasIt'
-alias legacy='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/MuniButler-Mobile'
-alias thesis='cd /Users/brettkan/Dropbox/Hack_Reactor/projects/Portalize'
-alias scripts='cd /Users/brettkan/Documents/scripts'
-
-### Lyft Onebox
-CURBOX="bkan" # This is the default argument for ob, sshl, sync, tailf, etc
-function ob {
-    ssh ${1:-$CURBOX}-onebox.dev.ln -t "onebox_env"
-}
-sshl () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; bash"
-}
-sync () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-${2:-$CURBOX}
-}
-syncg () {
-    ~/go/src/github.com/lyft/hacktools/sync-to-onebox-v3.sh $1-legacy-$CURBOX
-}
-synchost () {
-    ~/src/hacktools/sync-to-onebox-v3.sh $1-legacy-$2 --location host
-}
-tailf () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current"
-}
-tailfg () {
-    ssh $1-legacy-${3:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/$1-web/current | grep ${2}"
-}
-tailegress () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/egress_http.log"
-}
-tailingress () {
-    ssh $1-legacy-${2:-$CURBOX}-onebox.dev.ln -t "tail -f /var/log/envoy/ingress_http.log"
-}
-setbp () {
-    ~/src/hacktools/debug-onebox-service --onebox ${2:-$CURBOX} --container $1.legacy
-}
-testgreen () {
-    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv py.test tests/unit/"
-}
-lintgreen () {
-    ssh green-legacy-${1:-$CURBOX}-onebox.dev.ln -t "cd /srv/service/current; sudo service_venv flake8"
-}
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
-run-piptools () {
-    ~/src/hacktools/run-piptools
-}
-glideup () { # https://github.com/lyft/gotools/tree/master/cmd/gotools-glide-up
-    gotools-glide-up github.com/lyft/$1/
-}
-
-### lyftenv commands
-
 # install aactivator
-eval "$(/lyft/brew/bin/aactivator init)"
-
-
-
-### Testing
-
-# full suite of JS tests (without linting)
-# sudo service_venv ./manage.py test karma
-
-# full suite of JS tests
-# sudo service_venv ./manage.py test js
-
-# Jest Tests
-# sudo npm i -g jest-cli  
-# jest file.spec.jsx -t "someTest"
-
-# full suite of Python tests
-# sudo service_venv ./manage.py test python
-
-# full suite of Python tests with regex
-# sudo service_venv ./manage.py test python --only "payouts_test.py"
-
-# Python test one file (fast)
-# sudo service_venv py.test test/unit/server/resources/payouts_test.py
-
-# PDB debugger in python
-# import pdb; pdb.set_trace()
-
-# JS Test Watch
-# sudo grunt watch:jsTest
-
-# Jest in onebox
-# npm i -g jest-cli
-# jest file.spec.jsx
-
-# Update onebox with new dependencies / requirements
-# sudo salt-call state.highstate
-
-# Update python packages
-# sudo service_venv pip3 install -r requirements3.txt
-
-# Build and restart wwwpayxpfe
-# sudo make build && sudo sv restart wwwpayxpfe-web
-
-# Go To Packages Directory
-# /srv/venvs/service/trusty/service_venv_python3.6/lib/python3.6/site-packages/
-
+eval "$(/opt/lyft/brew/bin/aactivator init)"
+# blessclient
 source '/Users/bkan/src/blessclient/lyftprofile'
+# AWS Access
+source '/Users/bkan/src/awsaccess/awsaccess2.sh' # awsaccess
+source '/Users/bkan/src/awsaccess/oktaawsaccess.sh' # oktaawsaccess
+export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
+# lyft venv path
+export PATH="$PATH:${HOME}/bin"
 
 ### Ghost blog
 alias ghost='ssh root@104.236.130.89'
 
-export PATH="$PATH:${HOME}/bin"
-export PATH="$PATH:${HOME}/.composer/vendor/bin"
 
 ### Base 64 Decode
 b64() {
@@ -203,18 +112,9 @@ pretty() {
     echo $1 | python -mjson.tool
 }
 
-### Git revert last few.  Pass in commit that you want to change back to.
-eject() {
-	git revert --no-commit $1..HEAD
-}
-
-### Lyftkube PATH
-PATH=$PATH:/Users/bkan/.lyftkube-bin
-
 ### pyenv config
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
-source '/Users/bkan/src/awsaccess/awsaccess2.sh' # awsaccess
-source '/Users/bkan/src/awsaccess/oktaawsaccess.sh' # oktaawsaccess
-export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
+
+### Misc
