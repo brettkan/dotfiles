@@ -55,16 +55,16 @@ eject() {
 # Github scripts
 
 hubc() {
-    reponame=$(basename -s .git `git config --get remote.origin.url`)
-    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-    url="https://github.com/lyft/${reponame}/compare/${branch}"
+    local reponame=$(basename -s .git `git config --get remote.origin.url`)
+    local branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    local url="https://github.com/lyft/${reponame}/compare/${branch}"
     python -mwebbrowser $url
 }
 
 hubpr() {
-    reponame=$(basename -s .git `git config --get remote.origin.url`)
-    branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-    url="https://github.com/lyft/${reponame}/compare/${branch}?expand=1"
+    local reponame=$(basename -s .git `git config --get remote.origin.url`)
+    local branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+    local url="https://github.com/lyft/${reponame}/compare/${branch}?expand=1"
     python -mwebbrowser $url
 }
 
@@ -87,22 +87,29 @@ reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
 lyftscp () {
+    # SCP a file to a particular pod in production
     # $1 should be a pod name like: core-prod-4/green-spin-56766849dd-8vppk
     # $2 should be the path to the file to upload like: ~/Downloads/wav_add.csv
-    IN=$1
-    PODARR=(${IN//\// })
-    CLUSTER=${PODARR[0]}
-    PODID=${PODARR[1]}
-    PODIDARR=(${PODID//-/ })
-    SERVICE=${PODIDARR[0]}
+    local IN=$1
+    local PODARR=(${IN//\// })
+    local CLUSTER=${PODARR[0]}
+    local PODID=${PODARR[1]}
+    local PODIDARR=(${PODID//-/ })
+    local SERVICE=${PODIDARR[0]}
 
-    ENVIRON="production"
+    local ENVIRON="production"
 
-    IN2=$2
-    PATHARR=(${IN2//\// })
-    FILENAME=${PATHARR[${#PATHARR[@]}-1]}
+    local IN2=$2
+    local PATHARR=(${IN2//\// })
+    local FILENAME=${PATHARR[${#PATHARR[@]}-1]}
 
     lyftkube -e ${ENVIRON} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVIRON}/${PODID}://tmp/home/${FILENAME}
+}
+lpod () {
+    lyftkube get pods -e production -p $1
+}
+lpods () {
+    lyftkube get pods -e staging -p $1
 }
 
 # install aactivator
