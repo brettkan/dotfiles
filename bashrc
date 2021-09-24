@@ -100,7 +100,7 @@ lyftscp () {
 
     IN2=$2
     PATHARR=(${IN2//\// })
-    FILENAME=${PATHARR[-1]}
+    FILENAME=${PATHARR[${#PATHARR[@]}-1]}
 
     lyftkube -e ${ENVIRON} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVIRON}/${PODID}://tmp/home/${FILENAME}
 }
