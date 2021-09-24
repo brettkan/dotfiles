@@ -106,10 +106,13 @@ lyftscp () {
     lyftkube -e ${ENVIRON} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVIRON}/${PODID}://tmp/home/${FILENAME}
 }
 lpod () {
-    lyftkube get pods -e production -p $1
-}
-lpods () {
-    lyftkube get pods -e staging -p $1
+    local ENV="production"
+    if [ $# -eq 2 ]
+    then
+        local ENV="staging"
+    fi
+
+    lyftkube get pods -e $ENV -p $1
 }
 
 # install aactivator
