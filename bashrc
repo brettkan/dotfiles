@@ -86,6 +86,25 @@ alias srcg='cd $GOPATH/src/github.com/lyft'
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
+lyftscp () {
+    # $1 should be a pod name like: core-prod-4/green-spin-56766849dd-8vppk
+    # $2 should be the path to the file to upload like: ~/Downloads/wav_add.csv
+    IN=$1
+    PODARR=(${IN//\// })
+    CLUSTER=${PODARR[0]}
+    PODID=${PODARR[1]}
+    PODIDARR=(${PODID//-/ })
+    SERVICE=${PODIDARR[0]}
+
+    ENVIRON="production"
+
+    IN2=$2
+    PATHARR=(${IN2//\// })
+    FILENAME=${PATHARR[-1]}
+
+    lyftkube -e ${ENVIRON} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVIRON}/${PODID}://tmp/home/${FILENAME}
+}
+
 # install aactivator
 eval "$(/opt/lyft/brew/bin/aactivator init)"
 # blessclient
@@ -118,4 +137,11 @@ if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
 
+## pyenv / xcode fix
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+
 ### Misc
+PATH=$PATH:/Users/bkan/.lyftkube-bin

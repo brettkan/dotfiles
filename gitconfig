@@ -4,8 +4,8 @@
 [core]
 	autocrlf = input
 	safecrlf = true
-	editor = subl -n -w
 	excludesfile = /Users/brettkan/.gitignore_global
+	editor = code --wait
 [color]
   ui = true
   diff = auto
