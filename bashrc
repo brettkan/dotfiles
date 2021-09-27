@@ -87,9 +87,9 @@ reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
 lscp () {
-    # SCP a file to a particular pod in production
-    # $1 should be a pod name like: core-prod-4/green-spin-56766849dd-8vppk
-    # $2 should be the path to the file to upload like: ~/Downloads/wav_add.csv
+    # SCP a file to a particular docker pod
+    # $1 - pod name (e.g. core-prod-4/green-spin-56766849dd-8vppk )
+    # $2 - path to the file or directory to copy (e.g. ~/Downloads/wav_add.csv )
     local IN=$1
     local PODARR=(${IN//\// })
     local CLUSTER=${PODARR[0]}
@@ -108,7 +108,9 @@ lscp () {
     local PATHARR=(${IN2//\// })
     local FILENAME=${PATHARR[${#PATHARR[@]}-1]}
 
-    lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${FILENAME}
+    local COMMAND="lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${FILENAME}"
+    echo $COMMAND
+    eval $COMMAND
 }
 lpod () {
     local ENV="production"
@@ -117,7 +119,10 @@ lpod () {
         local ENV="staging"
     fi
 
-    lyftkube get pods -e $ENV -p $1
+
+    local COMMAND="lyftkube get pods -p $1 -e $ENV"
+    echo $COMMAND
+    eval $COMMAND
 }
 
 # install aactivator
