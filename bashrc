@@ -86,24 +86,29 @@ alias srcg='cd $GOPATH/src/github.com/lyft'
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
-lyftscp () {
+lscp () {
     # SCP a file to a particular pod in production
     # $1 should be a pod name like: core-prod-4/green-spin-56766849dd-8vppk
     # $2 should be the path to the file to upload like: ~/Downloads/wav_add.csv
     local IN=$1
     local PODARR=(${IN//\// })
     local CLUSTER=${PODARR[0]}
+    local CLUSTERARR=(${CLUSTER//-/ })
     local PODID=${PODARR[1]}
     local PODIDARR=(${PODID//-/ })
     local SERVICE=${PODIDARR[0]}
 
-    local ENVIRON="production"
+    local ENVFLAG="production"
+    if [ ${CLUSTERARR[1]} = "staging" ]
+    then
+        local ENVFLAG="staging"
+    fi
 
     local IN2=$2
     local PATHARR=(${IN2//\// })
     local FILENAME=${PATHARR[${#PATHARR[@]}-1]}
 
-    lyftkube -e ${ENVIRON} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVIRON}/${PODID}://tmp/home/${FILENAME}
+    lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${FILENAME}
 }
 lpod () {
     local ENV="production"
