@@ -86,6 +86,9 @@ alias srcg='cd $GOPATH/src/github.com/lyft'
 reado () {
     ssh readonlydb.ln -t "rom $1 shell"
 }
+lssh () {
+    lyftkube ssh $1
+}
 lscp () {
     # SCP a file to a particular docker pod
     # $1 - pod name (e.g. core-prod-4/green-spin-56766849dd-8vppk )
@@ -118,7 +121,6 @@ lpod () {
     then
         local ENV="staging"
     fi
-
 
     local COMMAND="lyftkube get pods -p $1 -e $ENV"
     echo $COMMAND
