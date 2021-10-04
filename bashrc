@@ -126,6 +126,7 @@ lpod () {
     echo $COMMAND
     eval $COMMAND
 }
+alias runpiptools='~/src/hacktools/run-piptools'
 
 # install aactivator
 eval "$(/opt/lyft/brew/bin/aactivator init)"
