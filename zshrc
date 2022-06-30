@@ -7,6 +7,7 @@ alias prof="subl ~/.zshrc"
 alias reprof=". ~/.zshrc"
 
 # zsh autocompletion
+fpath=(~/dotfiles/zsh/completions $fpath)
 autoload -Uz compinit && compinit
 
 # case insensitive path-completion
