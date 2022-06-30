@@ -4,10 +4,13 @@ alias ls='ls -GFh'
 
 ### zsh profile. Use reprof to apply updates.
 alias prof="subl ~/.zshrc"
-alias reprof=". ~/.zprofile"
+alias reprof=". ~/.zshrc"
 
 # zsh autocompletion
 autoload -Uz compinit && compinit
+
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 ### Show and hide hidden files in finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
