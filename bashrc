@@ -128,7 +128,7 @@ lpod () {
 }
 
 # install aactivator
-eval "$(/opt/lyft/brew/bin/aactivator init)"
+eval "$(aactivator init)"
 # blessclient
 source '/Users/bkan/src/blessclient/lyftprofile'
 # AWS Access
