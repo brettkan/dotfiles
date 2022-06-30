@@ -1,5 +1,5 @@
 ### zsh commands - Color, show ls multiple in a row
-export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
+export PS1="%F{cyan}%n%f@%F{green}%m%f:%F{red}%2~%f$ "
 alias ls='ls -GFh'
 
 ### zsh profile. Use reprof to apply updates.
@@ -132,7 +132,7 @@ source '/Users/bkan/src/blessclient/lyftprofile'
 # AWS Access
 source '/Users/bkan/src/awsaccess/awsaccess2.sh' # awsaccess
 source '/Users/bkan/src/awsaccess/oktaawsaccess.sh' # oktaawsaccess
-export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
+# export PS1="\$(ps1_mfa_context)$PS1" # awsaccess
 # lyft venv path
 export PATH="$PATH:${HOME}/bin"
 
