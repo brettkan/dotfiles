@@ -6,6 +6,9 @@ alias ls='ls -GFh'
 alias prof="subl ~/.zshrc"
 alias reprof=". ~/.zprofile"
 
+# zsh autocompletion
+autoload -Uz compinit && compinit
+
 ### Show and hide hidden files in finder
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -20,9 +23,6 @@ export PATH=$GOPATH/bin:$PATH
 
 # Hub Wrapper
 alias git=hub
-
-# Git AutoComplete
-autoload -Uz compinit && compinit
 
 # Git shortcuts
 alias gconfig='subl ~/.gitconfig'
