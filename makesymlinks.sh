@@ -8,7 +8,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="zprofile zshrc bash_profile bashrc jshintrc slate.js gitconfig"    # list of files/folders to symlink in homedir
+files="zprofile zshrc zshenv bash_profile bashrc jshintrc slate.js gitconfig"    # list of files/folders to symlink in homedir
 
 ##########
 
