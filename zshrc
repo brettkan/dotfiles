@@ -3,7 +3,7 @@ export PS1="%F{cyan}%n%f@%F{green}%m%f:%F{red}%2~%f$ "
 alias ls='ls -GFh'
 
 ### zsh profile. Use reprof to apply updates.
-alias prof="subl ~/.zshrc"
+alias prof="code ~/.zshrc"
 alias reprof=". ~/.zshrc"
 
 # zsh autocompletion
