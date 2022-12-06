@@ -93,22 +93,19 @@ lscp () {
     # $1 - pod name (e.g. core-prod-4/green-spin-56766849dd-8vppk )
     # $2 - path to the file or directory to copy (e.g. ~/Downloads/wav_add.csv )
     local IN=$1
-    local PODARR=(${IN//\// })
-    local CLUSTER=${PODARR[0]}
-    local CLUSTERARR=(${CLUSTER//-/ })
-    local PODID=${PODARR[1]}
-    local PODIDARR=(${PODID//-/ })
-    local SERVICE=${PODIDARR[0]}
+    local CLUSTER=${IN%%/*}
+    local CLUSTERENV=${${CLUSTER%-*}#*-}
+    local PODID=${IN##*/}
+    local SERVICE=${PODID%%-*}
 
     local ENVFLAG="production"
-    if [ ${CLUSTERARR[1]} = "staging" ]
+    if [ $CLUSTERENV = "staging" ]
     then
         local ENVFLAG="staging"
     fi
 
     local IN2=$2
-    local PATHARR=(${IN2//\// })
-    local FILENAME=${PATHARR[${#PATHARR[@]}-1]}
+    local FILENAME=${IN2##*/}
 
     local COMMAND="lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${FILENAME}"
     echo $COMMAND
