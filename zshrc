@@ -99,7 +99,7 @@ lscp () {
     local SERVICE=${PODID%%-*}
 
     local ENVFLAG="production"
-    if [ $CLUSTERENV = "staging" ]
+    if [ $CLUSTERENV = "stg" ]
     then
         local ENVFLAG="staging"
     fi
