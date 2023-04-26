@@ -179,3 +179,10 @@ fi
 # These variables were added by 'hacktools/set_go_env_vars.sh'
 export GOPROXY='https://athens.ingress.infra.us-east-1.k8s.lyft.net'
 export GONOSUMDB='github.com/lyft/*,github.lyft.net/*'
+
+### lyft_rd_shell_rc start
+### DO NOT REMOVE: automatically installed as part of Rancher Desktop setup
+if [[ -f /Users/bkan/.rd/shell_rc.sh ]]; then
+  source /Users/bkan/.rd/shell_rc.sh
+fi
+### lyft_rd_shell_rc end
