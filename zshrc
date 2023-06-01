@@ -173,7 +173,7 @@ fi
 
 # Add support for Go modules and Lyft's Athens module proxy/store
 # These variables were added by 'hacktools/set_go_env_vars.sh'
-export GOPROXY='https://athens.ingress.infra.us-east-1.k8s.lyft.net'
+export GOPROXY='https://athens.ingress.infra-prd.us-east-1.k8s.lyft.net'
 export GONOSUMDB='github.com/lyft/*,github.lyft.net/*'
 export PATH=/opt/homebrew/bin:$PATH
 
