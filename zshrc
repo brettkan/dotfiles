@@ -94,7 +94,8 @@ lscp () {
     # $2 - path to the file or directory to copy (e.g. ~/Downloads/wav_add.csv )
     local IN=$1
     local CLUSTER=${IN%%/*}
-    local CLUSTERENV=${${CLUSTER%-*}#*-}
+    local CLUSTERENVEXT=${CLUSTER#core-}
+    local CLUSTERENV=${CLUSTERENVEXT%-*}
     local PODID=${IN##*/}
     local SERVICE=${PODID%%-*}
 
@@ -108,6 +109,29 @@ lscp () {
     local FILENAME=${IN2##*/}
 
     local COMMAND="lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${IN2} ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${FILENAME}"
+    echo $COMMAND
+    eval $COMMAND
+}
+lscpr () {
+    # SCP retrieve a file to a particular docker pod
+    # $1 - pod name (e.g. core-prod-4/green-spin-56766849dd-8vppk )
+    # $2 - file name within /tmp/home/ directory (e.g. "csv_export" for /tmp/home/csv_export )
+    local IN=$1
+    local CLUSTER=${IN%%/*}
+    local CLUSTERENVEXT=${CLUSTER#core-}
+    local CLUSTERENV=${CLUSTERENVEXT%-*}
+    local PODID=${IN##*/}
+    local SERVICE=${PODID%%-*}
+
+    local ENVFLAG="production"
+    if [ $CLUSTERENV = "stg" ]
+    then
+        local ENVFLAG="staging"
+    fi
+
+    local IN2=$2
+
+    local COMMAND="lyftkube -e ${ENVFLAG} --cluster ${CLUSTER} kubectl cp ${SERVICE}-${ENVFLAG}/${PODID}://tmp/home/${IN2} /Users/bkan/Downloads/${IN2}"
     echo $COMMAND
     eval $COMMAND
 }
