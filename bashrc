@@ -186,3 +186,7 @@ if [[ -f /Users/bkan/.rd/shell_rc.sh ]]; then
   source /Users/bkan/.rd/shell_rc.sh
 fi
 ### lyft_rd_shell_rc end
+PATH="$PATH:/Users/bkan/.spcli/bin"
+
+### DO NOT REMOVE: automatically installed as part of Lyft local dev tool setup
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"

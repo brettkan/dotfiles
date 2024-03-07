@@ -1,6 +1,7 @@
 [user]
 	name = Brett Kan
 	email = bkan@lyft.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDIYyGyI48X30FLsU3yf2svkK0GkxDuXhV4qzsgdYdJq
 [core]
 	autocrlf = input
 	safecrlf = true
@@ -45,3 +46,9 @@
 	show = diff-so-fancy | less --tabs=1,5 -RFX
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true
